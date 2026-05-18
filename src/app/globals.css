@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
+@theme {
+  --color-gold-light: #FFD700;
+  --color-gold-deep: #D4A017;
+  --color-amber: #FF8C00;
+  --color-sunrise-orange: #FF6B1A;
+  --color-saffron: #FF9933;
+  --color-royal-purple: #6B21A8;
+  --color-deep-violet: #2D0A5E;
+  --color-lavender: #C084FC;
+  --color-cream: #FFF8F0;
+  --color-warm-dark: #120A00;
+
+  /* Font tokens reference the CSS variables set by Next.js on the html element */
+  --font-cinzel: var(--font-cinzel-face), "Cinzel Decorative", serif;
+  --font-cormorant: var(--font-cormorant-face), "Cormorant Garamond", serif;
+  --font-nunito: var(--font-nunito-face), "Nunito", sans-serif;
+  --font-dancing: var(--font-dancing-face), "Dancing Script", cursive;
+  --font-sans: var(--font-nunito-face), "Nunito", sans-serif;
+}
+
+/* Hardcoded base styles to ensure dark theme always applies */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html, body {
+  background-color: #120A00;
+  color: #FFF8F0;
+  overflow-x: hidden;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply font-sans;
+  }
+  
+  h1, h2, h3 {
+    @apply font-cinzel text-gold-light;
+  }
+  
+  h4, h5, h6 {
+    @apply font-cormorant text-gold-deep;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  .bg-glass {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .bg-glass-purple {
+    background: rgba(45, 10, 94, 0.45);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(107, 33, 168, 0.3);
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
