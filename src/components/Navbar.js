@@ -43,7 +43,7 @@ export default function Navbar() {
       <div className="container mx-auto px-6 flex justify-between items-center">
         <Link href="/" className="flex flex-col">
           <span className="font-cinzel text-xl md:text-2xl font-bold text-gold-light tracking-wider">
-            MATRI
+            MAITRI
           </span>
           <span className="font-cormorant text-xs tracking-[0.2em] text-cream uppercase">
             Healing Centre

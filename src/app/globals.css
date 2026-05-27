@@ -29,6 +29,7 @@ html, body {
   background-color: #120A00;
   color: #FFF8F0;
   overflow-x: hidden;
+  scrollbar-width: none
 }
 
 @layer base {

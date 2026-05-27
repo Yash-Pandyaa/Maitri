@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <Link href="/" className="inline-block mb-6">
               <h2 className="font-cinzel text-2xl font-bold text-gold-light tracking-wider">
-                MATRI
+                MAITRI
               </h2>
               <p className="font-cormorant text-xs tracking-[0.2em] text-cream uppercase">
                 Healing Centre

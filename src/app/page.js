@@ -12,58 +12,111 @@ export default function Home() {
   const taglineRef = useRef(null);
   const mandalaRef = useRef(null);
 
+  // useEffect(() => {
+  //   gsap.registerPlugin(ScrollTrigger);
+
+  //   // Hero Animation
+  //   const tl = gsap.timeline();
+
+  //   tl.fromTo(mandalaRef.current, 
+  //     { scale: 0.3, rotation: -180, opacity: 0 },
+  //     { scale: 1, rotation: 0, opacity: 0.15, duration: 2, ease: "power3.out" }
+  //   )
+  //   .fromTo(titleRef.current,
+  //     { y: 50, opacity: 0, rotationX: -90 },
+  //     { y: 0, opacity: 1, rotationX: 0, duration: 1.2, ease: "power4.out" },
+  //     "-=1.5"
+  //   )
+  //   .fromTo(taglineRef.current,
+  //     { y: 20, opacity: 0 },
+  //     { y: 0, opacity: 1, duration: 1, ease: "power2.out" },
+  //     "-=0.8"
+  //   )
+  //   .fromTo(".hero-btn",
+  //     { y: 20, opacity: 0 },
+  //     { y: 0, opacity: 1, duration: 0.8, stagger: 0.2, ease: "back.out(1.5)" },
+  //     "-=0.5"
+  //   );
+
+  //   // Continuous Mandala Rotation
+  //   gsap.to(mandalaRef.current, {
+  //     rotation: 360,
+  //     duration: 120,
+  //     repeat: -1,
+  //     ease: "linear"
+  //   });
+
+  //   // Scroll Animations
+  //   gsap.utils.toArray(".fade-up").forEach((element) => {
+  //     gsap.fromTo(element, 
+  //       { y: 50, opacity: 0 },
+  //       {
+  //         y: 0,
+  //         opacity: 1,
+  //         duration: 0.5,
+  //         scrollTrigger: {
+  //           trigger: element,
+  //           start: "top 80%",
+  //           toggleActions: "play none none reverse"
+  //         }
+  //       }
+  //     );
+  //   });
+
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
-    // Hero Animation
-    const tl = gsap.timeline();
+  const tl = gsap.timeline();
 
-    tl.fromTo(mandalaRef.current, 
-      { scale: 0.3, rotation: -180, opacity: 0 },
-      { scale: 1, rotation: 0, opacity: 0.15, duration: 2, ease: "power3.out" }
-    )
-    .fromTo(titleRef.current,
-      { y: 50, opacity: 0, rotationX: -90 },
-      { y: 0, opacity: 1, rotationX: 0, duration: 1.2, ease: "power4.out" },
-      "-=1.5"
-    )
-    .fromTo(taglineRef.current,
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, ease: "power2.out" },
-      "-=0.8"
-    )
-    .fromTo(".hero-btn",
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, stagger: 0.2, ease: "back.out(1.5)" },
-      "-=0.5"
-    );
+  // 1. Intro Animation Sequence
+  tl.fromTo(mandalaRef.current, 
+    { scale: 0.3, rotation: -180, opacity: 0 },
+    { scale: 1, rotation: 0, opacity: 0.15, duration: 2, ease: "power3.out" }
+  )
+  .fromTo(titleRef.current,
+    { y: 50, opacity: 0, rotationX: -90 },
+    { y: 0, opacity: 1, rotationX: 0, duration: 1.2, ease: "power4.out" },
+    "-=1.5"
+  )
+  .fromTo(taglineRef.current,
+    { y: 20, opacity: 0 },
+    { y: 0, opacity: 1, duration: 1, ease: "power2.out" },
+    "-=0.8"
+  )
+  .fromTo(".hero-btn",
+    { y: 20, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.8, stagger: 0.2, ease: "back.out(1.5)" },
+    "-=0.5"
+  )
+  // 2. Seamlessly transition to Continuous Mandala Rotation
+  .to(mandalaRef.current, {
+    rotation: 360,
+    duration: 120,
+    repeat: -1,
+    ease: "linear"
+  }, "-=0.5"); // Starts slightly before the button animation finishes completely
 
-    // Continuous Mandala Rotation
-    gsap.to(mandalaRef.current, {
-      rotation: 360,
-      duration: 120,
-      repeat: -1,
-      ease: "linear"
-    });
-
-    // Scroll Animations
-    gsap.utils.toArray(".fade-up").forEach((element) => {
-      gsap.fromTo(element, 
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          scrollTrigger: {
-            trigger: element,
-            start: "top 80%",
-            toggleActions: "play none none reverse"
-          }
+  // Scroll Animations
+  gsap.utils.toArray(".fade-up").forEach((element) => {
+    gsap.fromTo(element, 
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.5,
+        scrollTrigger: {
+          trigger: element,
+          start: "top 80%",
+          toggleActions: "play none none reverse"
         }
-      );
-    });
+      }
+    );
+  });
 
-  }, []);
+}, []);
+
+
+  // }, []);
 
   return (
     <div className="flex flex-col min-h-screen relative overflow-hidden">
@@ -81,7 +134,7 @@ export default function Home() {
         
         <div className="relative z-10 text-center max-w-4xl mx-auto flex flex-col items-center">
           <h1 ref={titleRef} className="text-5xl md:text-7xl lg:text-8xl mb-6 text-shadow-glow tracking-widest origin-bottom">
-            MATRI HEALING CENTRE
+            MAITRI HEALING CENTRE
           </h1>
           <p ref={taglineRef} className="font-dancing text-3xl md:text-5xl text-gold-deep mb-8">
             Rise and Shine with Lata Hada
